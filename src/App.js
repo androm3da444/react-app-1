@@ -8,7 +8,8 @@ class App extends Component {
       { name: 'Ron', age: 27 },
       { name: 'Jess', age: 31 },
       { name: 'Drew', age: 37 }
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (e) => {
@@ -36,6 +37,11 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = (e) => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -50,21 +56,26 @@ class App extends Component {
         <h1>Welcome</h1>
         <button
           style={style}
-          onClick={this.switchNameHandler}>Switch Name</button>
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {/*onClick={this.switchNameHandler}>Switch Name</button>*/}
         <button
           style={style}
           onClick={this.reloadWindow}>Reload Window</button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age} />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler}
-          changed={this.nameChangedHandler} >Testing</Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age} />
+        {this.state.showPersons ?
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age} />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              click={this.switchNameHandler}
+              changed={this.nameChangedHandler} >Testing</Person>
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age} />
+          </div> : null
+        }
       </div>
     );
   }
