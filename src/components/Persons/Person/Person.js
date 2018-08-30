@@ -3,11 +3,11 @@ import classes from './Person.css'
 //import Radium from 'radium'
 
 const person = (props) => {
-    // const style = {
-    //     '@media (min-width: 500px)': {
-    //         width: '450px'
-    //     }
-    // };
+
+    // const rnd = Math.random();
+    // if (rnd > 0.7) {
+    //     throw new Error('Something went wrong')
+    // }
 
     return (
         <div className={classes.Person}>
